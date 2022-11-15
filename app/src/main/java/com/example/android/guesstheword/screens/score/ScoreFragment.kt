@@ -58,7 +58,7 @@ class ScoreFragment : Fragment() {
                     get(ScoreViewModel::class.java)
 
         binding.scoreViewModel = viewModel
-        
+
         // Add observer for score
         viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
