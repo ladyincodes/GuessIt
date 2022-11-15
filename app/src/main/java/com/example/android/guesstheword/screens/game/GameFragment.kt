@@ -52,10 +52,15 @@ class GameFragment : Fragment() {
             false
         )
 
-        Log.i("GameFragment", "Called ViewModelProvider()")
+        // Get the viewmodel
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
+        // Set the viewmodel for databinding - this allows the bound layout access to all of the
+        // data in the VieWModel
         binding.gameViewModel = viewModel
+
+        // Specify the current activity as the lifecycle owner of the binding. This is used so that
+        // the binding can observe LiveData updates
         binding.setLifecycleOwner(this)
 
         viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
